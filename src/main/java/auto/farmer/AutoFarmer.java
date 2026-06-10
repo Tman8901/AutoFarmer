@@ -2,6 +2,9 @@ package auto.farmer;
 
 import net.fabricmc.api.ModInitializer;
 
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.level.GameType;
+import org.jspecify.annotations.Nullable;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
