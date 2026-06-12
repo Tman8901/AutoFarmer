@@ -1,28 +1,32 @@
 package auto.farmer;
 
 import net.fabricmc.api.ModInitializer;
-
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.level.GameType;
-import org.jspecify.annotations.Nullable;
+import net.fabricmc.fabric.api.command.v2.CommandRegistrationCallback;
+import net.minecraft.commands.Commands;
+import net.minecraft.network.chat.Component;
+import net.minecraft.server.level.ServerPlayer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 public class AutoFarmer implements ModInitializer {
 	public static final String MOD_ID = "auto-farmer";
-
-	// This logger is used to write text to the console and the log file.
-	// It is considered best practice to use your mod id as the logger's name.
-	// That way, it's clear which mod wrote info, warnings, and errors.
 	public static final Logger LOGGER = LoggerFactory.getLogger(MOD_ID);
 
 	@Override
 	public void onInitialize() {
-		// This code runs as soon as Minecraft is in a mod-load-ready state.
-		// However, some things (like resources) may still be uninitialized.
-		// Proceed with mild caution.
+		LOGGER.info("Auto Farmer mod initialized");
+        CommandRegistrationCallback.EVENT.register((dispatcher, registryAccess, environment) -> {
+            dispatcher.register(Commands.literal("setPosition").executes(context -> {
+                try {
+                    ServerPlayer player = context.getSource().getPlayerOrException();
 
-		LOGGER.info("Hello Fabric world!");
-        System.out.println("Hello World");
+                    String pos = player.blockPosition().toShortString();
+                    context.getSource().sendSuccess(() -> Component.literal("Position 1: " + pos), false);
+                } catch (Exception E) {
+                    context.getSource().sendFailure(Component.literal("Command Failed Please fix it bro!"));
+                }
+                return 1;
+            }));
+        });
 	}
 }
