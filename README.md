@@ -19,7 +19,7 @@ Don't know how to get to your mods' folder?
 
 On your keyboard, press the Windows key + R and type %AppData%, click your .minecraft folder, then click on mods and drag the file into there.
 
-    <img width="343" height="324" alt="image" src="https://github.com/user-attachments/assets/6a7a4f82-bd5a-4455-a752-945b7a2aed17" />
+<img src="https://github.com/user-attachments/assets/6a7a4f82-bd5a-4455-a752-945b7a2aed17" alt="Inv managment" width="300" style="display:block;margin:0 auto;">
 
 Make sure that your inventory is set up like this with your food in your offhand and your hoe/farming equipment of choice in the first slot.
 
