@@ -19,7 +19,8 @@ Don't know how to get to your mods' folder?
 
 On your keyboard, press the Windows key + R and type %AppData%, click your .minecraft folder, then click on mods and drag the file into there.
 
-    
+    <img width="343" height="324" alt="image" src="https://github.com/user-attachments/assets/6a7a4f82-bd5a-4455-a752-945b7a2aed17" />
+
 Make sure that your inventory is set up like this with your food in your offhand and your hoe/farming equipment of choice in the first slot.
 
 ## Steps to farm
@@ -30,8 +31,7 @@ Make sure that your inventory is set up like this with your food in your offhand
 
 The bot will try its best to run its quickest and most efficient. Tracking blocks/s and emeralds/h.
 
-*
-## How to set up auto sell
+## *How to set up auto sell
 Place 1-2 villagers every 100 blocks of the farm and do /setVillagerPosition. The bot will save its location in /minecraft/config/autofarm.
 **MAKE SURE IT HAS THE RIGHT TRADES FOR THE SPECIFIC CROP**
     
