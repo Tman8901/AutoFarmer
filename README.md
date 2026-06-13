@@ -17,8 +17,15 @@ Download Fabric from fabricmc.net and follow the download instructions from ther
 Once you've done that, download the .jar file from the latest releases or (Modrinth link) and drag the file into your mods' folder.
 Don't know how to get to your mods' folder?
 
-On your keyboard, press the Windows key + R and type %AppData%, click your .minecraft folder, then click on mods and drag the file into there.
+On Windows:
+On your keyboard, press the Windows key + R and type ```%AppData%,``` click your .minecraft folder, then click on mods and drag the file into there.
 
+On Linux:
+Open terminal and type ```xdg-open ~/.minecraft``` navigate to your mods folder and drag the file there
+
+On Mac:
+Open the Finder app and click "Go" in the top menu, then select ```"~/Library/Application Support/minecraft"``` navigate to your mods folder and drag the file there.
+\
 <img src="https://github.com/user-attachments/assets/6a7a4f82-bd5a-4455-a752-945b7a2aed17" alt="Inv managment" width="300" style="display:block;margin:0 auto;">
 
 Make sure that your inventory is set up like this with your food in your offhand and your hoe/farming equipment of choice in the first slot.
@@ -34,7 +41,7 @@ The bot will try its best to run its quickest and most efficient. Tracking block
 ## *How to set up auto sell
 Place 1-2 villagers every 100 blocks of the farm and do /setVillagerPosition. The bot will save its location in /minecraft/config/autofarm.
 **MAKE SURE IT HAS THE RIGHT TRADES FOR THE SPECIFIC CROP**
-    
+
 ### The default keybind to access the mod is O, but you can always type /autofarmer to acess the mod at any time.
 
 If you have any questions, please message me on GitHub or create an issue request.
