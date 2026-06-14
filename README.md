@@ -2,7 +2,7 @@
 
 ## Farming in Minecraft was just made easier.
 
-This mod implements parts of WAILA (What am I looking at) and Baritone to try and make the perfect farming experience in survival!
+This mod replicates parts of WAILA (What am I looking at) and Baritone to try and make the perfect farming experience in survival!
 
 Big shout out to RiceFarmer11 (github.com/familiar) for inspiring this idea with his sunsi bot!
 
