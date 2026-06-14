@@ -13,6 +13,8 @@ import net.minecraft.world.level.block.state.BlockState;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.util.Objects;
+
 
 public class AutoFarmerClient implements ClientModInitializer {
         public static final String MOD_ID = "auto-farmer";
@@ -20,6 +22,10 @@ public class AutoFarmerClient implements ClientModInitializer {
         LocalPlayer player;
 
         String playerPos;
+
+        String pos1;
+
+        String pos2;
 
         public void onInitializeClient() {
             LOGGER.info("Auto Farmer mod initialized");
@@ -49,10 +55,10 @@ public class AutoFarmerClient implements ClientModInitializer {
                         if(playerPos == null) {
                             context.getSource().sendSuccess(() -> Component.literal("Position 1: " + pos), false);
                             playerPos = pos;
-                            String pos1 = playerPos;
+                            pos1 = playerPos;
                         } else {
                             context.getSource().sendSuccess(() -> Component.literal("Position 2: " + pos), false);
-                            String pos2 = playerPos;
+                            pos2 = pos;
                             playerPos = null;
                         }
                         return 1;
@@ -60,6 +66,20 @@ public class AutoFarmerClient implements ClientModInitializer {
                         context.getSource().sendFailure(Component.literal("Not on Farmland!"));
                         return 0;
                     }
+                }));
+            });
+
+            CommandRegistrationCallback.EVENT.register((dispatcher, registryAccess, environment) -> {
+                dispatcher.register(Commands.literal("start").executes(context -> {
+                    context.getSource().sendSuccess(() -> Component.literal(pos1 + " " + pos2), false);
+                    if(!Objects.equals(playerPos, pos1)) {
+//                        String[] pos1split = pos1.split(",");
+                        System.out.println(pos1);
+                        player.setDeltaMovement(5, 5, 5);
+                    } else {
+                        context.getSource().sendSuccess(() -> Component.literal("Starting your sunsi bot"), false);
+                    }
+                    return 1;
                 }));
             });
 	}

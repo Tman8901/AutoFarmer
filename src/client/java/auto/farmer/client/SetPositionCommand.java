@@ -7,10 +7,6 @@ public class SetPositionCommand {
     private static final Set<String> executedCommands = new HashSet<>();
 
     public static void executedCommand(String command) {
-        if(!executedCommands.contains(command)) {
-            executedCommands.add(command);
-        } else {
 
-        }
     }
 }
