@@ -7,12 +7,17 @@ import net.minecraft.client.player.LocalPlayer;
 import net.minecraft.commands.Commands;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
+import net.minecraft.world.entity.EquipmentSlot;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
 import java.util.Objects;
 
 
@@ -27,7 +32,14 @@ public class AutoFarmerClient implements ClientModInitializer {
 
         String pos2;
 
-        public void onInitializeClient() {
+//        File file = new File("run/config/autofarm.txt");
+
+
+    public AutoFarmerClient() throws FileNotFoundException {
+        System.out.println("file not found");
+    }
+
+    public void onInitializeClient() {
             LOGGER.info("Auto Farmer mod initialized");
             CommandRegistrationCallback.EVENT.register((dispatcher, registryAccess, environment) -> {
                 dispatcher.register(Commands.literal("setPosition").executes(context -> {
@@ -56,10 +68,18 @@ public class AutoFarmerClient implements ClientModInitializer {
                             context.getSource().sendSuccess(() -> Component.literal("Position 1: " + pos), false);
                             playerPos = pos;
                             pos1 = playerPos;
+
+//                            out.println(pos1);
+//
+//                            out.close();
                         } else {
                             context.getSource().sendSuccess(() -> Component.literal("Position 2: " + pos), false);
                             pos2 = pos;
                             playerPos = null;
+
+//                            out.println(pos2);
+//
+//                            out.close();
                         }
                         return 1;
                     } else {
@@ -73,9 +93,9 @@ public class AutoFarmerClient implements ClientModInitializer {
                 dispatcher.register(Commands.literal("start").executes(context -> {
                     context.getSource().sendSuccess(() -> Component.literal(pos1 + " " + pos2), false);
                     if(!Objects.equals(playerPos, pos1)) {
-//                        String[] pos1split = pos1.split(",");
-                        System.out.println(pos1);
-                        player.setDeltaMovement(5, 5, 5);
+                        // TODO figure out how to make player move
+                        player.getInventory().setSelectedSlot(0);
+                        StartCommand.move(pos1, pos2);
                     } else {
                         context.getSource().sendSuccess(() -> Component.literal("Starting your sunsi bot"), false);
                     }
