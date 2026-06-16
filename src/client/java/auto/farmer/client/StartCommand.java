@@ -18,6 +18,9 @@ public class StartCommand {
     private static final long STEP_DELAY = 50; // delay between packets sent to server in ms
     private static final double NEAR_START = 0.5; // the threshold until near the start
 
+    static Minecraft client = Minecraft.getInstance();
+    static LocalPlayer player = client.player;
+
     private static final ExecutorService WORKER = Executors.newSingleThreadExecutor(r -> {
         Thread t = new Thread(r, "AutoFarmer-MoveWorker");
         t.setDaemon(true);
@@ -29,23 +32,28 @@ public class StartCommand {
         Vec3 pos2 = parseCoords(pos2Str);
         if(pos1 == null || pos2 == null) { return; }
 
-        Minecraft client = Minecraft.getInstance();
-
         client.execute(() -> {
-            LocalPlayer player = client.player;
             if (player == null || client.level == null) return;
 
             Vec3 currentPos = player.position();
-            List<Vec3> fullPath = new ArrayList<>();
-
-            if (currentPos.distanceTo(pos1) > NEAR_START) {
-                fullPath.addAll(generatePath(currentPos, pos1, STEP_LEN));
-                fullPath.add(pos1); // ensure final
-            }
 
             List<Vec3> path = generatePath(pos1, pos2, STEP_LEN);
             makeRealistic(client, player, path);
         });
+    }
+
+    public static void moveToStart(String pos1str) {
+        Vec3 pos1 = parseCoords(pos1str);
+        if(pos1 == null) { return; }
+
+        Vec3 currentPos = player.position();
+
+        List<Vec3> fullPath = new ArrayList<>();
+
+        if(currentPos.distanceTo(pos1) > NEAR_START) {
+            fullPath.addAll(generatePath(currentPos, pos1, STEP_LEN));
+            fullPath.add(pos1); // ensure final
+        }
     }
     // Parses the Coordinates from the string output to Vec3
     private static Vec3 parseCoords(String coordString) {
