@@ -37,6 +37,17 @@ public class StartCommand {
 
             Vec3 currentPos = player.position();
 
+            // Rounds the current position of the player to match pos1 pos2 readings
+            Vec3 roundedCurrentPos = new Vec3(
+                    Math.round(currentPos.x),
+                    Math.round(currentPos.y),
+                    Math.round(currentPos.z)
+            );
+
+            System.out.println("CURRENT POSITION: " + roundedCurrentPos);
+            System.out.println("POSITION 1: " + pos1);
+            System.out.println("POSITION 2: " + pos2);
+
             List<Vec3> path = generatePath(pos1, pos2, STEP_LEN);
             makeRealistic(client, player, path);
         });

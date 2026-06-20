@@ -95,6 +95,7 @@ public class AutoFarmerClient implements ClientModInitializer {
                     if(!Objects.equals(playerPos, pos1)) {
                         // TODO figure out how to make player move
                         player.getInventory().setSelectedSlot(0);
+                        StartCommand.move(pos1, pos2);
 
                     } else {
                         context.getSource().sendSuccess(() -> Component.literal("Starting your sunsi bot"), false);
