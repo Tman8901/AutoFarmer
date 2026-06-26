@@ -67,7 +67,7 @@ public class StartCommand {
         }
     }
     // Parses the Coordinates from the string output to Vec3
-    private static Vec3 parseCoords(String coordString) {
+    static Vec3 parseCoords(String coordString) {
         if(coordString == null) { return null; }
         String s = coordString.replaceAll("[()\\[\\]]", "").trim();
         String[] parts = s.split(",");
